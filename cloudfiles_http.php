@@ -1435,6 +1435,8 @@ class CF_Http
         default:
             break;
         }        
+        
+        curl_setopt($this->connections[$conn_type], CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
 
         curl_setopt($this->connections[$conn_type],
                     CURLOPT_HTTPHEADER, $headers);
