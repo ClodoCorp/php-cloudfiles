@@ -549,7 +549,7 @@ class CF_Http
             throw new SyntaxException("Container name not set.");
 
         $url_path = $this->_make_path("STORAGE", $container_name);
-        $return_code = $this->_send_request("PUT_CONT",$url_path);
+        $return_code = $this->_send_request("PUT_CONT",$url_path,array("Content-Length"=>"0"));
 
         if (!$return_code) {
             $this->error_str .= ": Failed to obtain valid HTTP response.";
