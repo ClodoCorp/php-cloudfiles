@@ -353,11 +353,11 @@ class CF_Http
         $return_code = $this->_send_request("PUT_CONT", $url_path, $hdrs);
         if ($return_code == 401) {
             $this->error_str = "Unauthorized";
-            return array($return_code,$this->response_reason,False);
+            return array($return_code,$this->response_reason,False,False);
         }
         if (!in_array($return_code, array(201,202))) {
             $this->error_str="Unexpected HTTP response: ".$this->response_reason;
-            return array($return_code,$this->response_reason,False);
+            return array($return_code,$this->response_reason,False,False);
         }
         return array($return_code,$this->response_reason,$this->_cdn_uri,
                      $this->_cdn_ssl_uri);
