@@ -79,7 +79,7 @@ define("MAX_OBJECT_NAME_LEN", 1024);
 define("MAX_OBJECT_SIZE", 5*1024*1024*1024+1);
 define("US_AUTHURL", "https://auth.api.rackspacecloud.com");
 define("UK_AUTHURL", "https://lon.auth.api.rackspacecloud.com");
-define("CLODO_AUTHURL", "https://testapi.clodo.ru");
+define("CLODO_AUTHURL", "https://api.clodo.ru");
 /**
  * Class for handling Cloud Files Authentication, call it's {@link authenticate()}
  * method to obtain authorized service urls and an authentication token.
