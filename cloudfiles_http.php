@@ -540,7 +540,7 @@ class CF_Http
 
     # PUT /v1/Account/Container
     #
-    function create_container($container_name)
+    function create_container($container_name,$public=0)
     {
         if ($container_name == "")
             throw new SyntaxException("Container name not set.");
@@ -549,7 +549,14 @@ class CF_Http
             throw new SyntaxException("Container name not set.");
 
         $url_path = $this->_make_path("STORAGE", $container_name);
-        $return_code = $this->_send_request("PUT_CONT",$url_path,array("Content-Length"=>"0"));
+
+        // clodo make public support
+        $hdrs = array();
+        $hdrs["Content-Length"] = "0";
+        if ($public)
+            $hdrs["X-Container-Read"] = ".r:*";
+
+        $return_code = $this->_send_request("PUT_CONT",$url_path,$hdrs);
 
         if (!$return_code) {
             $this->error_str .= ": Failed to obtain valid HTTP response.";
