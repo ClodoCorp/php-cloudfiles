@@ -476,7 +476,7 @@ class CF_Connection
      * @throws SyntaxException invalid name
      * @throws InvalidResponseException unexpected response
      */
-    function create_container($container_name=NULL)
+    function create_container($container_name=NULL,$public=0)
     {
         if ($container_name != "0" and !isset($container_name))
             throw new SyntaxException("Container name not set.");
@@ -495,7 +495,7 @@ class CF_Connection
                 MAX_CONTAINER_NAME_LEN));
         }
 
-        $return_code = $this->cfs_http->create_container($container_name);
+        $return_code = $this->cfs_http->create_container($container_name,$public);
         if (!$return_code) {
             throw new InvalidResponseException("Invalid response ("
                 . $return_code. "): " . $this->cfs_http->get_error());
